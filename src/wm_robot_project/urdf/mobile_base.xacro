@@ -1,0 +1,337 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:property name="wheel_radius" value="0.1"/>
+    <xacro:property name="wheel_length" value="0.05"/>
+    <xacro:macro name="cylinder_inertia" params="m r l o_xyz o_rpy">
+        <inertial>
+            <mass value="${m}"/>
+            <origin xyz="${o_xyz}" rpy="${o_rpy}"/>
+            <inertia 
+                ixx="${(m/12) * (3*r*r + l*l)}" 
+                ixy="0" 
+                ixz="0" 
+                iyy="${(m/12) * (3*r*r + l*l)}" 
+                iyz="0" 
+                izz="${(m/2) * (r*r)}"/>
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="sphere_inertia" params="m r o_xyz o_rpy">
+        <inertial>
+            <mass value="${m}"/>
+            <origin xyz="${o_xyz}" rpy="${o_rpy}"/>
+            <inertia 
+                ixx="${(2/5) * m * r * r}" 
+                ixy="0" 
+                ixz="0" 
+                iyy="${(2/5) * m * r * r}" 
+                iyz="0" 
+                izz="${(2/5) * m * r * r}"/>
+        </inertial>
+    </xacro:macro>
+  <link name="base_footprint"/>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.0037146 -0.00045656 0.12116" rpy="0 0 0" />
+      <mass value="25.079" />
+      <inertia ixx="0.32579" ixy="0" ixz="0.012193" iyy="0.89813" iyz="0" izz="1.1027" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://wm_robot_project/meshes/base_link.STL" />
+      </geometry>
+      <material name="orange"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://wm_robot_project/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="soni1">
+    <inertial>
+      <origin xyz="-0.0025046 -1.8888E-05 -4.9385E-05" rpy="0 0 0" />
+      <mass value="0.0044896" />
+      <inertia ixx="9.3681E-07" ixy="0" ixz="0" iyy="1.74E-07" iyz="0" izz="8.8635E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://wm_robot_project/meshes/soni1.STL" />
+      </geometry>
+      <material name="light_blue"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://wm_robot_project/meshes/soni1.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="s_j1" type="fixed">
+    <origin xyz="-0.3965 0 0.185" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="soni1" />
+  </joint>
+
+  <link name="soni2">
+    <inertial>
+      <origin xyz="-0.0025046 -1.8888E-05 -4.9385E-05" rpy="0 0 0" />
+      <mass value="0.0044896" />
+      <inertia ixx="9.3681E-07" ixy="0" ixz="0" iyy="1.74E-07" iyz="0" izz="8.8635E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://wm_robot_project/meshes/soni2.STL" />
+      </geometry>
+      <material name="light_blue"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://wm_robot_project/meshes/soni2.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="s_j2" type="fixed">
+    <origin xyz="0 0.2715 0.185" rpy="-3.1416 0 -1.5708" />
+    <parent link="base_link" />
+    <child link="soni2" />
+  </joint>
+
+  <link name="soni3">
+    <inertial>
+      <origin xyz="-0.0025046 -1.8888E-05 -4.9385E-05" rpy="0 0 0" />
+      <mass value="0.0044896" />
+      <inertia ixx="9.3681E-07" ixy="0" ixz="0" iyy="1.74E-07" iyz="0" izz="8.8635E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://wm_robot_project/meshes/soni3.STL" />
+      </geometry>
+      <material name="light_blue"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://wm_robot_project/meshes/soni3.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="s_j3" type="fixed">
+    <origin xyz="0.49478 -0.1384 0.1784" rpy="3.1416 0 3.1416" />
+    <parent link="base_link" />
+    <child link="soni3" />
+  </joint>
+
+  <link name="soni4">
+    <inertial>
+      <origin xyz="-0.0025046 -1.8888E-05 -4.9385E-05" rpy="0 0 0" />
+      <mass value="0.0044896" />
+      <inertia ixx="9.3681E-07" ixy="0" ixz="0" iyy="1.74E-07" iyz="0" izz="8.8635E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://wm_robot_project/meshes/soni4.STL" />
+      </geometry>
+      <material name="light_blue"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://wm_robot_project/meshes/soni4.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="s_j4" type="fixed">
+    <origin xyz="0.49449 0.1384 0.1784" rpy="3.1416 0 3.1416" />
+    <parent link="base_link" />
+    <child link="soni4" />
+  </joint>
+
+  <link name="soni5">
+    <inertial>
+      <origin xyz="-0.0025046 -1.8888E-05 -4.9385E-05" rpy="0 0 0" />
+      <mass value="0.0044896" />
+      <inertia ixx="9.3681E-07" ixy="0" ixz="0" iyy="1.74E-07" iyz="0" izz="8.8635E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://wm_robot_project/meshes/soni5.STL" />
+      </geometry>
+      <material name="light_blue"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://wm_robot_project/meshes/soni5.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="s_j5" type="fixed">
+    <origin xyz="0 -0.2715 0.185" rpy="0 0 1.5708" />
+    <parent link="base_link" />
+    <child link="soni5" />
+  </joint>
+
+  <link name="wheel1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://wm_robot_project/meshes/wheel1.STL" />
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.1016" />
+      </geometry>
+    </collision>
+    <xacro:cylinder_inertia 
+                m="1.0762" 
+                r="${wheel_radius}" 
+                l="${wheel_length}" 
+                o_xyz="0 0 0" 
+                o_rpy="${pi / 2.0} 0 0"/>
+  </link>
+
+
+
+  <joint name="wheel1_j" type="continuous">
+    <origin xyz="-0.2007 0.2 0" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="wheel1" />
+    <axis xyz="0 1 0" />
+  </joint>
+
+  <link name="wheel2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://wm_robot_project/meshes/wheel2.STL" />
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.1016" />
+      </geometry>
+    </collision>
+    <xacro:cylinder_inertia 
+                m="1.0762" 
+                r="${wheel_radius}" 
+                l="${wheel_length}" 
+                o_xyz="0 0 0" 
+                o_rpy="${pi / 2.0} 0 0"/>
+  </link>
+
+  <joint name="wheel2_j" type="continuous">
+    <origin xyz="-0.2007 -0.2 0" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="wheel2" />
+    <axis xyz="0 1 0" />
+  </joint>
+
+  <link name="caster1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://wm_robot_project/meshes/caster1.STL" />
+      </geometry>
+      <material name="black"/>
+    </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <sphere radius="0.05" />
+    </geometry>
+  </collision>
+  <xacro:sphere_inertia 
+            m="0.35" 
+            r="${wheel_radius / 2.0}" 
+            o_xyz="0 0 0" 
+            o_rpy="0 0 0"/>
+  </link>
+
+  <joint name="caster1_j" type="fixed">
+    <origin xyz="0.27848 -0.19038 -0.0516" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="caster1" />
+  </joint>
+
+  <link name="caster2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://wm_robot_project/meshes/caster2.STL" />
+      </geometry>
+      <material name="black"/>
+    </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <sphere radius="0.05" />
+    </geometry>
+  </collision>
+  <xacro:sphere_inertia 
+            m="0.35" 
+            r="${wheel_radius / 2.0}" 
+            o_xyz="0 0 0" 
+            o_rpy="0 0 0"/>
+  </link>
+
+  <joint name="caster2_j" type="fixed">
+    <origin xyz="0.27848 0.19557 -0.0516" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="caster2" />
+  </joint>
+
+  <link name="lidar">
+    <inertial>
+      <origin xyz="0.01206 -0.00053212 -0.028765" rpy="0 0 0" />
+      <mass value="0.073085" />
+      <inertia ixx="1.9581E-05" ixy="0" ixz="0" iyy="2.4125E-05" iyz="0" izz="4.1418E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://wm_robot_project/meshes/lidar.STL" />
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://wm_robot_project/meshes/lidar.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="lidar_j" type="fixed">
+    <origin xyz="0.28 -0.0002 0.3344" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="lidar" />
+  </joint>
+
+  <joint name="base_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0.1016" rpy="0 0 0"/>
+  </joint>
+  
+</robot>

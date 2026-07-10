@@ -1,0 +1,7 @@
+<library path="wm_robot_hardware">
+<class name="wm_robot_driver/WmRobotBaseHardwareInterface" type="wm_robot_driver::WmRobotBaseHardwareInterface" base_class_type="hardware_interface::SystemInterface">
+<description>
+Hardware interface for a WM robot with 2 differential drive wheels
+</description>
+</class>
+</library>
