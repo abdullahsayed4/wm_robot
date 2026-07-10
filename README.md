@@ -215,12 +215,12 @@ ros2 launch teleop_twist_joy teleop-launch.py
 
 | Name | Role |
 |------|------|
-| Abdullah Sayed | Motor control & hardware interface |
-| Abanoub Osama | Navigation & SLAM |
-| Elsayed Azab | Firmware & embedded systems |
-| Amir Magdy | Mechanical design & lift mechanism |
-| Youssef Omar | Sensor integration & IMU |
-| Nourhan Nagy | Web interface & system integration |
+| Abdullah Sayed | Motor control & hardware interface & system integration|
+| Abanoub Osama | Mechanical design |
+| Elsayed Azab |Navigation & SLAM & |
+| Amir Magdy | electrical circuit  |
+| Youssef Omar | Sensor integration |
+| Nourhan Nagy | Web interface & lifting mechanism |
 
 **Supervisor:** Dr. Mahmoud Mohamed El-Samanti  
 **Institution:** Faculty of Engineering at Shoubra, Benha University
