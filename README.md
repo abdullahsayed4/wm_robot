@@ -213,14 +213,15 @@ ros2 launch teleop_twist_joy teleop-launch.py
 
 ## Team
 
- Name 
-------
- Abdullah Sayed  
- Abanoub Osama 
- Elsayed Azab 
- Amir Magdy 
- Youssef Omar 
- Nourhan Nagy 
+| Name |
+|------|
+| Abdullah Sayed |
+| Abanoub Osama |
+| Elsayed Azab |
+| Amir Magdy |
+| Youssef Omar |
+| Nourhan Nagy |
+
 **Supervisor:** Dr. Mahmoud Mohamed El-Samanti  
 **Institution:** Faculty of Engineering at Shoubra, Benha University
 
